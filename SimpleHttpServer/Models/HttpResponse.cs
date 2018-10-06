@@ -49,6 +49,26 @@ namespace SimpleHttpServer.Models
                 this.setContent(value, encoding: Encoding.UTF8);
             }
         }
+
+        public string ContentAsGBK
+        {
+            set
+            {
+                value = utf8ToGBK(value);
+                this.setContent(value, encoding: Encoding.GetEncoding("GBK"));
+            }
+        }
+
+        public static string utf8ToGBK(string content)
+        {
+            Encoding gbk = Encoding.GetEncoding("GBK");
+            Encoding utf8 = Encoding.UTF8;
+            byte[] utfBytes = utf8.GetBytes(content);
+            byte[] isoBytes = Encoding.Convert(utf8, gbk, utfBytes);
+            string msg = gbk.GetString(isoBytes);
+            return msg;
+        }
+
         public void setContent(string content, Encoding encoding = null)
         {
             if (encoding == null)

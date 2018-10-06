@@ -27,6 +27,12 @@ namespace SimpleHttpServer.WebApp
                     },
                     new Route()
                     {
+                        Callable = new XMLRouteHandler() { }.XMLHandle,
+                        UrlRegex = "^\\/xml$",
+                        Method = "POST"
+                    },
+                    new Route()
+                    {
                         Callable = new FileSystemRouteHandler() { BasePath = @"C:\Users\Barend.Erasmus\Desktop\Test"}.Handle,
                         UrlRegex = "^\\/Static\\/(.*)$",
                         Method = "GET"

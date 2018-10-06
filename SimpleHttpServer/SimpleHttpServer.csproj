@@ -67,6 +67,7 @@
     <Compile Include="Models\Route.cs" />
     <Compile Include="HttpServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RouteHandlers\XMLRouteHandler.cs" />
     <Compile Include="RouteHandlers\FileSystemRouteHandler.cs" />
   </ItemGroup>
   <ItemGroup>
